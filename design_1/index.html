@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>পুনর্নকশা</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy-900: #1b2440;
+        --navy-800: #232f52;
+        --navy-700: #2e3b63;
+        --ochre-600: #b98a2e;
+        --ochre-500: #cba043;
+        --bg: #f5f2ea;
+        --bg-2: #ece5d2;
+        --ink: #1e2024;
+        --ink-soft: #5b6270;
+        --line: #dbd4c0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hind Siliguri", sans-serif;
+        line-height: 1.7;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .serif {
+        font-family: "Noto Serif Bengali", serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* ---------- utility bar ---------- */
+      .utility {
+        background: var(--navy-900);
+      }
+      .utility .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 32px;
+        font-size: 13px;
+        color: var(--ochre-500);
+      }
+      .utility .langs a {
+        margin-left: 18px;
+        color: #c7ccda;
+      }
+      .utility .langs a:first-child {
+        margin-left: 0;
+      }
+      .utility .langs a.active {
+        color: var(--ochre-500);
+      }
+
+      /* ---------- nameplate ---------- */
+      .nameplate .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 26px 32px 20px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .wordmark {
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin: 0;
+        color: var(--navy-900);
+      }
+      .navlist {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+        padding-bottom: 6px;
+      }
+      .navlist a {
+        font-size: 15px;
+        color: var(--ink-soft);
+      }
+      .navlist a:hover {
+        color: var(--ochre-600);
+      }
+      .nameplate-rule {
+        height: 2px;
+        background: var(--navy-900);
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        background: var(--navy-900);
+        color: #edebf4;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 50px;
+        padding: 64px 32px 60px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-orn {
+        position: absolute;
+        right: -40px;
+        top: -60px;
+        width: 420px;
+        height: 420px;
+        opacity: 0.14;
+        z-index: 0;
+      }
+      .kicker {
+        font-size: 14px;
+        color: var(--ochre-500);
+        margin: 0 0 16px;
+        font-weight: 500;
+      }
+      .hero-title {
+        font-size: 36px;
+        line-height: 1.4;
+        margin: 0 0 20px;
+        color: #fbfaf6;
+        max-width: 22ch;
+      }
+      .hero-excerpt {
+        font-size: 16.5px;
+        color: #b9becc;
+        max-width: 56ch;
+        margin: 0 0 18px;
+      }
+      .byline {
+        font-size: 14px;
+        color: var(--ochre-500);
+        margin: 0;
+      }
+
+      .issue-panel {
+        border-left: 1px solid #3a4670;
+        padding-left: 36px;
+      }
+      .issue-panel h4 {
+        font-size: 14px;
+        color: #93e;
+        color: #8b93b0;
+        margin: 0 0 20px;
+        font-weight: 400;
+      }
+      .mini-item {
+        padding: 16px 0;
+        border-bottom: 1px solid #33406a;
+      }
+      .mini-item:first-of-type {
+        padding-top: 0;
+      }
+      .mini-tag {
+        font-size: 12px;
+        color: var(--ochre-500);
+        display: block;
+        margin-bottom: 6px;
+      }
+      .mini-title {
+        font-size: 15.5px;
+        color: #edebf4;
+        margin: 0;
+        line-height: 1.5;
+      }
+      .mini-title:hover {
+        color: var(--ochre-500);
+      }
+
+      /* ---------- pull quote ---------- */
+      .pullquote {
+        background: var(--bg-2);
+        padding: 54px 32px;
+      }
+      .pullquote .wrap {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        max-width: 820px;
+      }
+      .quote-mark {
+        font-family: "Noto Serif Bengali", serif;
+        font-size: 64px;
+        color: var(--ochre-600);
+        line-height: 1;
+      }
+      .quote-text {
+        font-family: "Noto Serif Bengali", serif;
+        font-size: 24px;
+        line-height: 1.6;
+        color: var(--navy-900);
+        margin: 0 0 14px;
+      }
+      .quote-attr {
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- main ---------- */
+      .main {
+        padding: 56px 0 20px;
+      }
+      .main .wrap {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 60px;
+        align-items: start;
+      }
+      .section-label {
+        font-size: 22px;
+        color: var(--navy-900);
+        margin: 0 0 24px;
+      }
+
+      .lead-article {
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 26px;
+      }
+      .lead-tag {
+        display: inline-block;
+        font-size: 12px;
+        color: var(--ochre-600);
+        border: 1px solid var(--ochre-600);
+        padding: 3px 10px;
+        margin-bottom: 14px;
+      }
+      .lead-title {
+        font-size: 26px;
+        color: var(--navy-900);
+        margin: 0 0 12px;
+        line-height: 1.4;
+      }
+      .lead-excerpt {
+        font-size: 16px;
+        color: var(--ink-soft);
+        max-width: 64ch;
+        margin: 0 0 12px;
+      }
+
+      .article-row {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .article-row:last-child {
+        border-bottom: none;
+      }
+      .article-title {
+        font-size: 18.5px;
+        margin: 0 0 6px;
+        color: var(--navy-900);
+      }
+      .article-title a:hover {
+        color: var(--ochre-600);
+      }
+      .article-byline {
+        font-size: 13px;
+        color: var(--ochre-600);
+        margin: 0;
+      }
+
+      /* ---------- sidebar ---------- */
+      .side-block {
+        margin-bottom: 40px;
+      }
+      .side-title {
+        font-size: 15px;
+        color: var(--navy-900);
+        margin: 0 0 16px;
+        font-family: "Noto Serif Bengali", serif;
+      }
+      .chip-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        font-size: 13px;
+        padding: 6px 13px;
+        border: 1px solid var(--line);
+        color: var(--ink-soft);
+      }
+      .chip:hover {
+        border-color: var(--ochre-600);
+        color: var(--ochre-600);
+      }
+
+      .issue-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .issue-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .issue-list li:first-child {
+        padding-top: 0;
+      }
+      .issue-list a:hover {
+        color: var(--ochre-600);
+      }
+      .issue-list span {
+        color: var(--ink-soft);
+        font-size: 12.5px;
+      }
+
+      /* ---------- highlight ---------- */
+      .highlight {
+        background: var(--navy-900);
+        color: #edebf4;
+        padding: 0;
+      }
+      .highlight .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .highlight-col {
+        padding: 46px 40px;
+      }
+      .highlight-col:first-child {
+        border-right: 1px solid #33406a;
+      }
+      .highlight-col h3 {
+        font-size: 20px;
+        margin: 0 0 12px;
+        color: #fbfaf6;
+      }
+      .highlight-col p {
+        font-size: 14.5px;
+        color: #b9becc;
+        margin: 0 0 16px;
+        max-width: 44ch;
+      }
+      .highlight-col a {
+        font-size: 14px;
+        color: var(--ochre-500);
+        border-bottom: 1px solid var(--ochre-500);
+        padding-bottom: 2px;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        background: var(--bg-2);
+        padding: 50px 0 26px;
+      }
+      footer .wrap {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 40px;
+      }
+      .foot-mark {
+        font-family: "Noto Serif Bengali", serif;
+        font-size: 22px;
+        color: var(--navy-900);
+        margin: 0 0 12px;
+      }
+      footer p {
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin: 0 0 6px;
+        max-width: 40ch;
+      }
+      .foot-col h5 {
+        font-size: 14px;
+        color: var(--navy-900);
+        margin: 0 0 14px;
+        font-weight: 600;
+      }
+      .foot-col a {
+        display: block;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        margin-bottom: 9px;
+      }
+      .foot-col a:hover {
+        color: var(--ochre-600);
+      }
+      .foot-bottom {
+        border-top: 1px solid var(--line);
+        margin-top: 36px;
+        padding-top: 18px;
+      }
+      .foot-bottom .wrap {
+        display: block;
+        padding-top: 0;
+      }
+      .foot-bottom p {
+        font-size: 12.5px;
+      }
+
+      @media (max-width: 760px) {
+        .hero .wrap,
+        .main .wrap,
+        .highlight .wrap,
+        footer .wrap {
+          grid-template-columns: 1fr;
+        }
+        .issue-panel {
+          border-left: none;
+          padding-left: 0;
+          border-top: 1px solid #33406a;
+          padding-top: 24px;
+        }
+        .highlight-col:first-child {
+          border-right: none;
+          border-bottom: 1px solid #33406a;
+        }
+        .wordmark {
+          font-size: 34px;
+        }
+        .hero-title {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="utility">
+      <div class="wrap">
+        <span
+          >সফর ১৪৪৮ &nbsp;·&nbsp; আগস্ট ২০২৬ &nbsp;·&nbsp; বর্ষ ২২, সংখ্যা
+          ০৮</span
+        >
+        <span class="langs"
+          ><a href="#" class="active">বাংলা</a><a href="#">اردو</a
+          ><a href="#">العربية</a><a href="#">খুঁজুন</a></span
+        >
+      </div>
+    </div>
+
+    <header class="nameplate">
+      <div class="wrap">
+        <h1 class="wordmark">আলকাউসার</h1>
+        <nav class="navlist">
+          <a href="#">মূলপাতা</a>
+          <a href="#">সকল সংখ্যা</a>
+          <a href="#">বিভাগ</a>
+          <a href="#">লেখকবৃন্দ</a>
+          <a href="#">আপনার জিজ্ঞাসা</a>
+          <a href="#">পরিচিতি</a>
+        </nav>
+      </div>
+    </header>
+    <div class="nameplate-rule"></div>
+
+    <section class="hero">
+      <svg
+        class="hero-orn"
+        viewBox="0 0 400 400"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="200" cy="200" r="180" stroke="#CBA043" stroke-width="1" />
+        <circle cx="200" cy="200" r="130" stroke="#CBA043" stroke-width="1" />
+        <path
+          d="M200 20 L200 380 M20 200 L380 200 M60 60 L340 340 M340 60 L60 340"
+          stroke="#CBA043"
+          stroke-width="0.7"
+        />
+      </svg>
+      <div class="wrap">
+        <div>
+          <p class="kicker">সম্পাদকীয়</p>
+          <h2 class="hero-title">
+            এইচএসসি পরীক্ষার্থীদের আন্দোলন ও শিক্ষামন্ত্রীর বক্তব্য সকল পক্ষের
+            জন্য শিক্ষণীয়
+          </h2>
+          <p class="hero-excerpt">
+            পূর্বনির্ধারিত সময়সূচি অনুযায়ী দেশে এখন চলছে ২০২৬ সালের এইচএসসি
+            পরীক্ষা। এরই মধ্যে প্রবল বৃষ্টিপাতে রাজধানী ঢাকাসহ দেশের বিভিন্ন
+            অঞ্চলে জলাবদ্ধতাও দেখা দিয়েছে...
+          </p>
+          <p class="byline">সম্পাদক : আবুল হাসান মুহাম্মাদ আবদুল্লাহ</p>
+        </div>
+        <div class="issue-panel">
+          <h4>এই সংখ্যায় আরও</h4>
+          <div class="mini-item">
+            <span class="mini-tag">নিবন্ধ</span>
+            <p class="mini-title">
+              <a href="#"
+                >রোযা ও ঈদ : একই দিনে পালনের দাবির দলীলভিত্তিক পর্যালোচনা</a
+              >
+            </p>
+          </div>
+          <div class="mini-item">
+            <span class="mini-tag">অনুবাদ</span>
+            <p class="mini-title">
+              <a href="#"
+                >মডার্নিজম দ্বীনবিচ্ছিন্ন 'মডার্নিটি'র মৌলিক বিচ্যুতি</a
+              >
+            </p>
+          </div>
+          <div class="mini-item">
+            <span class="mini-tag">মতামত</span>
+            <p class="mini-title"><a href="#">বিশ্বকাপ উন্মাদনা শেষে</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pullquote">
+      <div class="wrap">
+        <span class="quote-mark">"</span>
+        <div>
+          <p class="quote-text">
+            জুলাই অভ্যুত্থানের সবচেয়ে বড় অর্জন তো খুবই স্পষ্ট, এবং সেটা
+            তাৎক্ষণিকই ঘটেছিল।
+          </p>
+          <p class="quote-attr">
+            মুফতি আবুল হাসান মুহাম্মাদ আব্দুল্লাহ &nbsp;·&nbsp; সাক্ষাৎকার থেকে
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="wrap">
+        <div>
+          <h3 class="section-label">সাম্প্রতিক প্রবন্ধ</h3>
+
+          <div class="lead-article">
+            <span class="lead-tag">সাক্ষাৎকার</span>
+            <h4 class="lead-title">
+              <a href="#"
+                >জুলাই অভ্যুত্থান ব্যর্থ হয়নি, তবে কাঙ্ক্ষিত সফলতা এখনও অর্জিত
+                হয়নি</a
+              >
+            </h4>
+            <p class="lead-excerpt">
+              প্রশ্ন : জুলাই অভ্যুত্থানের দুই বছর পূর্ণ হয়েছে। আপনার দৃষ্টিতে
+              অভ্যুত্থানের অর্জন ও ব্যর্থতা কী?
+            </p>
+            <p class="article-byline">মুফতি আবুল হাসান মুহাম্মাদ আব্দুল্লাহ</p>
+          </div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#">বিতর্ক : যুক্তি ও প্রমাণ — স্রষ্টার অস্তিত্ব</a>
+            </h4>
+            <p class="article-byline">খবর ৷ অতঃপর</p>
+          </div>
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#">অন্যেরও ওযর থাকতে পারে</a>
+            </h4>
+            <p class="article-byline">পাঠকের পাতা</p>
+          </div>
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#"
+                >'মাআলিমুস সুন্নাতিন নাবাবিয়্যাহ' সংকলকের কিছু দাবি ও তার
+                পর্যালোচনা</a
+              >
+            </h4>
+            <p class="article-byline">জুলাই ২০২৬ সংখ্যার ধারাবাহিকতা</p>
+          </div>
+        </div>
+
+        <aside>
+          <div class="side-block">
+            <h4 class="side-title">প্রসঙ্গসমূহ</h4>
+            <div class="chip-wrap">
+              <a class="chip" href="#">ঈমান-আকাইদ</a>
+              <a class="chip" href="#">নামায-সালাত</a>
+              <a class="chip" href="#">তাহারাত</a>
+              <a class="chip" href="#">রমযান প্রসঙ্গ</a>
+              <a class="chip" href="#">হজ্জ্ব</a>
+              <a class="chip" href="#">যাকাত</a>
+              <a class="chip" href="#">মুয়ামালাত</a>
+              <a class="chip" href="#">তাসাওউফ</a>
+              <a class="chip" href="#">দাওয়াত ও তাবলীগ</a>
+            </div>
+          </div>
+
+          <div class="side-block">
+            <h4 class="side-title">সাম্প্রতিক সংখ্যা</h4>
+            <ul class="issue-list">
+              <li><a href="#">আগস্ট ২০২৬</a><span>সফর ১৪৪৮</span></li>
+              <li><a href="#">জুলাই ২০২৬</a><span>মুহাররম ১৪৪৮</span></li>
+              <li><a href="#">জুন ২০২৬</a><span>যিলহজ্ব ১৪৪৭</span></li>
+              <li><a href="#">মে ২০২৬</a><span>যিলকদ ১৪৪৭</span></li>
+              <li><a href="#">এপ্রিল ২০২৬</a><span>শাওয়াল ১৪৪৭</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="wrap">
+        <div class="highlight-col">
+          <h3>আপনার জিজ্ঞাসা</h3>
+          <p>
+            পাঠকদের পাঠানো প্রশ্নের শরয়ী জবাব, বিভাগ অনুযায়ী সাজানো ও সহজে
+            খুঁজে পাওয়ার ব্যবস্থাসহ।
+          </p>
+          <a href="#">উত্তরসমূহ দেখুন</a>
+        </div>
+        <div class="highlight-col">
+          <h3>শিক্ষার্থীদের পাতা</h3>
+          <p>
+            মাদরাসা ও স্কুল-কলেজ শিক্ষার্থীদের জন্য নিয়মিত পরামর্শ ও পাঠ-সহায়ক
+            আলোচনা।
+          </p>
+          <a href="#">পাতাটি দেখুন</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div>
+          <p class="foot-mark">আলকাউসার</p>
+          <p>
+            সম্পাদক ও প্রকাশক : আবুল হাসান মুহাম্মাদ আবদুল্লাহ। সার্কুলেশন :
+            ৩০/১২, পল্লবী, মিরপুর-১২, ঢাকা-১২১৬।
+          </p>
+          <p>info@alkawsar.com</p>
+        </div>
+        <div class="foot-col">
+          <h5>বিভাগ</h5>
+          <a href="#">সম্পাদকীয়</a>
+          <a href="#">আনওয়ারুল কুরআন</a>
+          <a href="#">প্রচলিত ভুল</a>
+          <a href="#">আপনি যা জানতে চেয়েছেন</a>
+          <a href="#">শিক্ষার্থীদের পাতা</a>
+        </div>
+        <div class="foot-col">
+          <h5>সাইট</h5>
+          <a href="#">লেখকবৃন্দ</a>
+          <a href="#">সকল সংখ্যা</a>
+          <a href="#">পরিচিতি</a>
+          <a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div class="wrap">
+          <p>কপিরাইট © মাসিক আলকাউসার। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
