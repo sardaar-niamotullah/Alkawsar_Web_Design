@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>পুনর্নকশা ৪</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --teal-900: #0d332f;
+        --teal-800: #134a43;
+        --teal-700: #1c6058;
+        --gold-600: #a9822f;
+        --gold-500: #c39c3e;
+        --parchment: #f8f3e7;
+        --parchment-2: #f1e9d6;
+        --ink: #20281e;
+        --ink-soft: #5b6357;
+        --line: #dcd0ac;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--parchment);
+        color: var(--ink);
+        font-family: "Hind Siliguri", sans-serif;
+        line-height: 1.7;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .serif {
+        font-family: "Noto Serif Bengali", serif;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* ---------- masthead ---------- */
+      .masthead {
+        text-align: center;
+        padding: 40px 24px 0;
+      }
+      .rule {
+        height: 1px;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--gold-600) 0 8px,
+          transparent 8px 14px
+        );
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .rule.thick {
+        height: 2px;
+        background: var(--gold-600);
+        max-width: 600px;
+        margin: 6px auto 0;
+      }
+      .wordmark {
+        font-size: 52px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 22px 0 6px;
+        color: var(--teal-900);
+      }
+      .tagline {
+        margin: 0 0 18px;
+        color: var(--ink-soft);
+        font-size: 16px;
+        letter-spacing: 0.5px;
+      }
+      .issue-line {
+        margin: 0 0 20px;
+        font-size: 14px;
+        color: var(--gold-600);
+        font-weight: 500;
+      }
+
+      /* ---------- nav ---------- */
+      nav.mainnav {
+        background: var(--teal-900);
+        margin-top: 14px;
+      }
+      nav.mainnav .wrap {
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        flex-wrap: wrap;
+        padding: 14px 32px;
+      }
+      nav.mainnav a {
+        color: var(--parchment);
+        font-size: 15px;
+      }
+      nav.mainnav a:hover {
+        color: var(--gold-500);
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        padding: 56px 0 40px;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 56px;
+        align-items: start;
+      }
+      .kicker {
+        display: inline-block;
+        font-size: 14px;
+        color: var(--gold-600);
+        border-bottom: 1px solid var(--gold-600);
+        padding-bottom: 4px;
+        margin-bottom: 18px;
+        font-weight: 500;
+      }
+      .hero-title {
+        font-size: 34px;
+        line-height: 1.35;
+        margin: 0 0 18px;
+        color: var(--teal-900);
+      }
+      .hero-excerpt {
+        font-size: 17px;
+        color: var(--ink-soft);
+        max-width: 56ch;
+        margin: 0 0 16px;
+      }
+      .byline {
+        font-size: 14px;
+        color: var(--gold-600);
+        margin: 0;
+      }
+
+      .cover-card {
+        background: var(--teal-900);
+        color: var(--parchment);
+        padding: 28px 24px 24px;
+        text-align: center;
+      }
+      .cover-ornament {
+        margin: 0 auto 18px;
+        width: 120px;
+        height: 120px;
+      }
+      .cover-issue {
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: var(--gold-500);
+        margin: 0 0 8px;
+      }
+      .cover-caption {
+        font-family: "Noto Serif Bengali", serif;
+        font-size: 22px;
+        margin: 0 0 20px;
+      }
+      .cover-link {
+        display: inline-block;
+        font-size: 14px;
+        border: 1px solid var(--gold-500);
+        padding: 9px 22px;
+        color: var(--parchment);
+      }
+      .cover-link:hover {
+        background: var(--gold-500);
+        color: var(--teal-900);
+      }
+
+      /* ---------- section label ---------- */
+      .section-label {
+        font-size: 22px;
+        color: var(--teal-900);
+        margin: 0 0 4px;
+      }
+      .section-rule {
+        height: 1px;
+        background: var(--line);
+        margin: 0 0 28px;
+      }
+
+      /* ---------- main grid ---------- */
+      .main {
+        padding: 20px 0 8px;
+      }
+      .main .wrap {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .article-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .article-row:first-child {
+        padding-top: 0;
+      }
+      .article-title {
+        font-size: 20px;
+        margin: 0;
+        color: var(--teal-900);
+      }
+      .article-title a:hover {
+        color: var(--gold-600);
+      }
+      .article-excerpt {
+        font-size: 15px;
+        color: var(--ink-soft);
+        margin: 0;
+        max-width: 62ch;
+      }
+      .article-byline {
+        font-size: 13px;
+        color: var(--gold-600);
+        margin: 0;
+      }
+
+      /* ---------- sidebar ---------- */
+      .side-block {
+        margin-bottom: 44px;
+      }
+      .side-title {
+        font-size: 16px;
+        color: var(--teal-900);
+        margin: 0 0 14px;
+        font-family: "Noto Serif Bengali", serif;
+      }
+      .topics-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .topics-list li {
+        border-bottom: 1px solid var(--line);
+        padding: 9px 0;
+        font-size: 14.5px;
+      }
+      .topics-list li:first-child {
+        padding-top: 0;
+      }
+      .topics-list a:hover {
+        color: var(--gold-600);
+      }
+
+      .issues-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .issue-thumb {
+        width: 60px;
+        height: 82px;
+        background: var(--teal-800);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold-500);
+        font-size: 11px;
+        text-align: center;
+        padding: 4px;
+      }
+
+      /* ---------- highlight strip ---------- */
+      .highlight {
+        background: var(--parchment-2);
+        padding: 52px 0;
+        margin-top: 24px;
+      }
+      .highlight .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+      .highlight-card {
+        background: var(--parchment);
+        border: 1px solid var(--gold-600);
+        padding: 26px 26px 22px;
+      }
+      .highlight-card h3 {
+        font-size: 20px;
+        color: var(--teal-900);
+        margin: 0 0 10px;
+      }
+      .highlight-card p {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        margin: 0 0 16px;
+      }
+      .highlight-card a.go {
+        font-size: 14px;
+        color: var(--gold-600);
+        border-bottom: 1px solid var(--gold-600);
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        background: var(--teal-900);
+        color: var(--parchment);
+        padding: 44px 0 28px;
+        margin-top: 20px;
+      }
+      footer .wordmark-sm {
+        font-family: "Noto Serif Bengali", serif;
+        font-size: 22px;
+        margin: 0 0 10px;
+        color: var(--parchment);
+      }
+      footer p {
+        font-size: 13px;
+        color: #b9c6be;
+        max-width: 62ch;
+        margin: 0 0 6px;
+      }
+
+      @media (max-width: 760px) {
+        .hero .wrap,
+        .main .wrap,
+        .highlight .wrap {
+          grid-template-columns: 1fr;
+        }
+        .wordmark {
+          font-size: 38px;
+        }
+        .hero-title {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="rule"></div>
+      <h1 class="wordmark">আলকাউসার</h1>
+      <p class="tagline">মাসিক ইসলামী জ্ঞান ও সচেতনতার সাময়িকী</p>
+      <p class="issue-line">
+        বর্ষ ২২ &nbsp;·&nbsp; সংখ্যা ০৮ &nbsp;·&nbsp; সফর ১৪৪৮ / আগস্ট ২০২৬
+      </p>
+      <div class="rule thick"></div>
+    </header>
+
+    <nav class="mainnav">
+      <div class="wrap">
+        <a href="#">মূলপাতা</a>
+        <a href="#">সকল সংখ্যা</a>
+        <a href="#">বিভাগ</a>
+        <a href="#">লেখকবৃন্দ</a>
+        <a href="#">আপনার জিজ্ঞাসা</a>
+        <a href="#">পরিচিতি</a>
+        <a href="#">যোগাযোগ</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="kicker">সম্পাদকীয়</span>
+          <h2 class="hero-title">
+            এইচএসসি পরীক্ষার্থীদের আন্দোলন ও শিক্ষামন্ত্রীর বক্তব্য সকল পক্ষের
+            জন্য শিক্ষণীয়
+          </h2>
+          <p class="hero-excerpt">
+            পূর্বনির্ধারিত সময়সূচি অনুযায়ী দেশে এখন চলছে ২০২৬ সালের এইচএসসি
+            পরীক্ষা। এরই মধ্যে প্রবল বৃষ্টিপাতে রাজধানী ঢাকাসহ দেশের বিভিন্ন
+            অঞ্চলে জলাবদ্ধতাও দেখা দিয়েছে...
+          </p>
+          <p class="byline">সম্পাদক : আবুল হাসান মুহাম্মাদ আবদুল্লাহ</p>
+        </div>
+        <div class="cover-card">
+          <svg
+            class="cover-ornament"
+            viewBox="0 0 120 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M60 6 C80 26 100 40 114 60 C100 80 80 94 60 114 C40 94 20 80 6 60 C20 40 40 26 60 6 Z"
+              stroke="#C39C3E"
+              stroke-width="1.2"
+            />
+            <circle
+              cx="60"
+              cy="60"
+              r="30"
+              stroke="#C39C3E"
+              stroke-width="1.2"
+            />
+            <path
+              d="M60 30 L60 90 M30 60 L90 60"
+              stroke="#C39C3E"
+              stroke-width="0.8"
+            />
+          </svg>
+          <p class="cover-issue">এই সংখ্যার প্রচ্ছদ</p>
+          <p class="cover-caption">হজ্ব পরবর্তী জীবন</p>
+          <a class="cover-link" href="#">সংখ্যাটি দেখুন</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="main">
+      <div class="wrap">
+        <div>
+          <h3 class="section-label">অন্যান্য প্রবন্ধসমূহ</h3>
+          <div class="section-rule"></div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#"
+                >সাক্ষাৎকার &nbsp;৷&nbsp; জুলাই অভ্যুত্থান ব্যর্থ হয়নি, তবে
+                কাঙ্ক্ষিত সফলতা এখনও অর্জিত হয়নি</a
+              >
+            </h4>
+            <p class="article-excerpt">
+              প্রশ্ন : জুলাই অভ্যুত্থানের দুই বছর পূর্ণ হয়েছে। আপনার দৃষ্টিতে
+              অভ্যুত্থানের অর্জন ও ব্যর্থতা কী?
+            </p>
+            <p class="article-byline">মুফতি আবুল হাসান মুহাম্মাদ আব্দুল্লাহ</p>
+          </div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#"
+                >একই দিনে সারা বিশ্বে রোযা ও ঈদ পালন করার মতবাদ — একটি
+                দলীলভিত্তিক পর্যালোচনা</a
+              >
+            </h4>
+            <p class="article-excerpt">
+              গত মে মাসের ০৯ তারিখে ইঞ্জিনিয়ার্স ইনস্টিটিউশন রমনায় সংশ্লিষ্ট
+              বিষয়ে জাতীয় সেমিনার অনুষ্ঠিত হয়...
+            </p>
+            <p class="article-byline">মাওলানা মুহাম্মাদ আব্দুল মালেক</p>
+          </div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#"
+                >মডার্নিজম দ্বীনবিচ্ছিন্ন 'মডার্নিটি'র মৌলিক বিচ্যুতি</a
+              >
+            </h4>
+            <p class="article-excerpt">
+              ২০১৬ সালে পাকিস্তানের ন্যাশনাল ডিফেন্স ইউনিভার্সিটিতে প্রদত্ত একটি
+              ইংরেজি বক্তৃতার অনুবাদ পাঠকের জন্য পেশ করা হলো...
+            </p>
+            <p class="article-byline">হযরত মাওলানা মুফতি তকী উছমানী</p>
+          </div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#">বিতর্ক : যুক্তি ও প্রমাণ — স্রষ্টার অস্তিত্ব</a>
+            </h4>
+            <p class="article-excerpt">
+              গত ২০ ডিসেম্বর ২০২৫ তারিখে ভারতীয় লেখক জাভেদ আখতার ও একজন
+              নওজোয়ান আলেমেদ্বীনের মধ্যে অনুষ্ঠিত আলোচনার পর্যালোচনা...
+            </p>
+            <p class="article-byline">খবর ৷ অতঃপর</p>
+          </div>
+
+          <div class="article-row">
+            <h4 class="article-title">
+              <a href="#">অন্যেরও ওযর থাকতে পারে</a>
+            </h4>
+            <p class="article-excerpt">
+              কিছু কিছু ভাবনা জীবনকে সুন্দর ও সহজ করে। মনের ভেতরটাকে স্বচ্ছ ও
+              পরিচ্ছন্ন রাখে...
+            </p>
+            <p class="article-byline">পাঠকের পাতা</p>
+          </div>
+        </div>
+
+        <aside>
+          <div class="side-block">
+            <h4 class="side-title">প্রসঙ্গসমূহ</h4>
+            <ul class="topics-list">
+              <li><a href="#">ঈমান-আকাইদ</a></li>
+              <li><a href="#">নামায-সালাত</a></li>
+              <li><a href="#">তাহারাত</a></li>
+              <li><a href="#">রমযান প্রসঙ্গ</a></li>
+              <li><a href="#">হজ্জ্ব</a></li>
+              <li><a href="#">যাকাত</a></li>
+              <li><a href="#">মুয়ামালাত-লেনদেন</a></li>
+              <li><a href="#">তাসাওউফ-আত্মশুদ্ধি</a></li>
+              <li><a href="#">দাওয়াত ও তাবলীগ</a></li>
+            </ul>
+          </div>
+
+          <div class="side-block">
+            <h4 class="side-title">সাম্প্রতিক সংখ্যা</h4>
+            <div class="issues-row">
+              <div class="issue-thumb">আগস্ট ২০২৬</div>
+              <div class="issue-thumb">জুলাই ২০২৬</div>
+              <div class="issue-thumb">জুন ২০২৬</div>
+              <div class="issue-thumb">মে ২০২৬</div>
+              <div class="issue-thumb">এপ্রিল ২০২৬</div>
+              <div class="issue-thumb">মার্চ ২০২৬</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="wrap">
+        <div class="highlight-card">
+          <h3>আপনার জিজ্ঞাসা</h3>
+          <p>
+            পাঠকদের পাঠানো প্রশ্নের শরয়ী জবাব — নির্দিষ্ট বিভাগ অনুযায়ী
+            সাজানো, সহজে খুঁজে পাওয়ার ব্যবস্থাসহ।
+          </p>
+          <a class="go" href="#">উত্তরসমূহ দেখুন</a>
+        </div>
+        <div class="highlight-card">
+          <h3>শিক্ষার্থীদের পাতা</h3>
+          <p>
+            মাদরাসা ও স্কুল-কলেজ শিক্ষার্থীদের জন্য নিয়মিত পরামর্শ, লেখা ও
+            পাঠ-সহায়ক আলোচনা।
+          </p>
+          <a class="go" href="#">পাতাটি দেখুন</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <p class="wordmark-sm">আলকাউসার</p>
+        <p>সম্পাদক ও প্রকাশক : আবুল হাসান মুহাম্মাদ আবদুল্লাহ</p>
+        <p>
+          সার্কুলেশন : ৩০/১২, পল্লবী, মিরপুর-১২, ঢাকা-১২১৬ &nbsp;·&nbsp;
+          info@alkawsar.com
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
